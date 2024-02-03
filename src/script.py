@@ -68,10 +68,10 @@ def generate_logistics_data(num_records):
 
     for _ in range(num_records):
         quantity = fake.random_int(min=1, max=5)
-        marge = fake.random_int(min=5, max=30)
+        marge = fake.random_int(min=500, max=3000) / 100
         unit_seller_price = fake.random_int(min=1, max=5000) * 100
         
-        p_price = (unit_seller_price + unit_seller_price * marge) / 100
+        p_price = (unit_seller_price + unit_seller_price * marge / 100)
         price = p_price * quantity
         price_seller = quantity * unit_seller_price
 
@@ -126,8 +126,15 @@ def generate_logistics_data(num_records):
             "reason_name": None,
             "mmk_fault": str(fake.boolean(chance_of_getting_true=10)).lower()
         }
-        logistics_data.append(logistics_entry)
-
+        # 20% chance for timedelivered to be set to timestart + 2 hours
+        if random.random() < 0.2:
+            logistics_entry["timedelivered"] = (datetime.fromisoformat(logistics_entry["timestart"]) + timedelta(hours=2)).isoformat()
+        else:
+            # 80% chance for timedelivered to be randomly set between timestart + 2 hours and timestart + 5*24 hours
+            random_hours = random.uniform(2, 5 * 24)
+            logistics_entry["timedelivered"] = (datetime.fromisoformat(logistics_entry["timestart"]) + timedelta(hours=random_hours)).isoformat()
+    
+    logistics_data.append(logistics_entry)
     return logistics_data
 
 def generate_sql_insert_statements(data):

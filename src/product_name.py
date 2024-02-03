@@ -64,14 +64,14 @@ def build_product_name(structure):
     return name.strip()
 
 # Generate different product name variations
-structures = [
-    ["adjective", "noun"],
-    ["adjective", "verb", "noun"],
-    ["noun", "adjective", "other"],
-    ["verb", "rhyme", "other", "noun"],
-    ["adjective", "noun", "verb", "other"],
-    ["noun", "other", "verb", "noun"]
-]
+# structures = [
+#     ["adjective", "noun"],
+#     # ["adjective", "verb", "noun"],
+#     # ["noun", "adjective", "other"],
+#     # ["verb", "rhyme", "other", "noun"],
+#     # ["adjective", "noun", "verb", "other"],
+#     # ["noun", "other", "verb", "noun"]
+# ]
 
-for structure in structures:
-    print(build_product_name(structure))
+# for structure in structures:
+#     print(build_product_name(structure))

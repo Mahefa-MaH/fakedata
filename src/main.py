@@ -12,7 +12,7 @@ if __name__ == "__main__":
     create_logistics_table(db_connection)
 
     # Generate data
-    num_records_to_generate = 20
+    num_records_to_generate = 200
     logistics_data_generated = generate_logistics_data(num_records_to_generate)
 
     # Execute SQL INSERT statements

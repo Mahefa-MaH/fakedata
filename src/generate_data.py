@@ -40,7 +40,7 @@ def generate_logistics_data(num_records):
             "apt_interval": f"{fake.random_int(min=1, max=12)}e mois {day}/{day+fake.random_int(min=0, max=3)} {fake.random_int(min=1, max=24)}h-{fake.random_int(min=1, max=24)}h",
             "apt_date": (datetime.now() + timedelta(days=fake.random_int(min=1, max=30))).isoformat(),
             "commentary": fake.sentence() if fake.boolean(chance_of_getting_true=30) else None,
-            "timestart": (datetime.now() - timedelta(hours=fake.random_int(min=0, max=230000)) - timedelta(minutes=fake.random_int(min=1, max=60))).isoformat(),
+            "timestart": (datetime.now() - timedelta(hours=fake.random_int(min=0, max=230*2)) - timedelta(minutes=fake.random_int(min=1, max=60))).isoformat(),
             "p_price": p_price,
             "list_price": list_price,
             "timedelivered": None,
